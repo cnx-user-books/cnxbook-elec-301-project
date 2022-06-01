@@ -1,0 +1,25 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Recovering Intensity</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m36370</md:content-id>
+  <md:title>Recovering Intensity</md:title>
+  <md:abstract/>
+  <md:uuid>10d54c73-2bc6-40eb-a935-e291d9b103dd</md:uuid>
+</metadata>
+
+<content>
+  <para id="delete_me"><!-- Insert module text here -->
+  
+<media id="diagram5" alt="schematics">
+   <image mime-type="image/png" src="../../media/intensity.png"/>
+ </media>
+<newline/>
+<emphasis> Image captured using a pinhole mask (left) and the deblurred image (right) without light correction.</emphasis>
+<newline/>
+<newline/>
+The mask reduces the amount of light that enters the camera aperture, reducing the brightness of the captured images. The deblurred image we recover is dim compared to the same image captured without the coded aperture so we compensate by scaling the intensity of the deblurred image according to the ratio of opaque area in the mask to the total area of the mask. The intensity of the deconvolved image is extracted, scaled, then replaced for a more appealing image.
+</para>
+</content>
+
+</document>

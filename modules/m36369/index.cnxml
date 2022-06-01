@@ -1,0 +1,69 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+<title>Motivation</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m36369</md:content-id>
+  <md:title>Motivation</md:title>
+  <md:abstract/>
+  <md:uuid>21e9c536-c693-4606-b42a-5b66a5ef6c05</md:uuid>
+</metadata>
+
+<content>
+  <para id="delete_me"><!-- Insert module text here -->
+  Optical blurring of an image is the result of light rays from a single object focusing at a point before or after the sensor in a camera. This physical situation can be described as a convolution of the true captured image with an optical filter: the point spread function (PSF).</para><equation id="eip-40"><m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+			<m:ci type="fn">
+			  <m:msub>
+			    <m:mi>i</m:mi>
+			    <m:mn>blurred image</m:mn>
+			  </m:msub>
+			</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		  <m:apply>
+		    <m:apply>
+		      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#convolve"/>
+		      <m:apply>
+			<m:ci type="fn">
+			  <m:msub>
+			    <m:mi>k</m:mi>
+			    <m:mn>PSF</m:mn>
+			  </m:msub>
+			</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">
+			  <m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mn>natural image</m:mn>
+			  </m:msub>
+			</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  
+	      </m:apply>
+	    </m:math>
+	  </equation><para id="eip-758">Given that the PSF works much like a frequency response for a spatial domain, we explore the possibility of extracting a focused image from an image that has been captured out of focus. </para><equation id="eip-226"><m:math>
+<m:apply>
+  <m:eq/>
+  <m:ci>D</m:ci>
+  <m:apply>
+    <m:times/>
+    <m:apply>
+      <m:inverse/>
+      <m:ci>K</m:ci>
+    </m:apply>
+    <m:ci>I</m:ci>
+  </m:apply>
+</m:apply>
+</m:math></equation><para id="eip-907">where D, K, I are the transforms of the deblurred image, the PSF, and a blurred image. 
+<newline/> <newline/>
+Instead of using the full circular aperture of most cameras, we place a coded mask within the lens of our camera. The mask itself is nothing more than a binary-coded transparency, but it enables us to force a particular PSF into our camera system. By recreating the mask's code in software, we can recover the PSF that is appropriate for the depth at which our image would have been focused. Once we have the appropriate PSF for a particular focus-depth (which correlates to increasing or decreasing the size of the mask in software), we use the Richardson-Lucy Deconvolution algorithm to recover a focused image.</para>
+</content>
+
+</document>

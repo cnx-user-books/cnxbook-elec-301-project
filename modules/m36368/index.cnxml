@@ -1,0 +1,58 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Mask Finding and Scaling</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m36368</md:content-id>
+  <md:title>Mask Finding and Scaling</md:title>
+  <md:abstract/>
+  <md:uuid>4ecdf978-eb1c-4a12-a017-58777972f8d1</md:uuid>
+</metadata>
+
+<content>
+  <para id="delete_me"><!-- Insert module text here -->
+The PSF is effectively the impulse response in the optical domain. If we try to describe a system with an incorrect impulse response, the output is not true. Accordingly, every plane at a particular depth has its own impulse response, or PSF in this case. The size or scale of a PSF corresponds to a particular plane of focus in space and a blurred image is effectively captured when a lens is focused at a depth that does not correspond to the plane in which the object exists. This is the same situation we recreate when we capture our blurred images. 
+<newline/>
+<newline/>
+For these reasons it is important that we obtain not only an exact replica of the PSF used to capture the blurred image, but also the exact scale for the depth of the captured image. An incorrect PSF yields less than desirable results and after experimenting with various techniques we developed two methods for generating the PSF for a given mask and depth in MATLAB: manual construction of the matrix and a search algorithm.
+
+
+ </para><para id="eip-496"><title>Hand Mask</title><newline/>
+<media id="diagram4" alt="schematics">
+   <image mime-type="image/png" src="../../media/matrix.png"/>
+ </media>
+<media id="diagram6" alt="schematics">
+   <image mime-type="image/png" src="../../media/arrow.png"/>
+ </media>
+<media id="diagram5" alt="schematics">
+   <image mime-type="image/png" src="../../media/matrix2.png"/>
+ </media>
+<newline/>
+<emphasis> Original Matrix of Scale 1 is transformed to a Matrix of Scale 2. </emphasis>
+<newline/>
+<newline/>
+When the distance from the camera to the object is unknown, manual construction of a mask is preferred. The small size of this method allows the mask to be scaled easily as shown above so that the appropriate PSF for a given distance can be searched. The masks are represented by an N-by-N matrix, where every black block is marked as a 0 and every transparent block is marked as a 1. 
+<newline/>
+<newline/>
+The simplicity of this method is appealing and provides decent results. One of the main drawbacks to creating the matrix manually is that the actual mask hardly ever appears exactly in the image. For example, the corners of our masks are rounded by the camera aperture. We are able to compensate for this by reducing the intensity of the corner entries in our matrix to about 0.5. A second drawback is that rotations in the placement of the mask in the camera reduce the effectiveness of our manually constructed matrix. 
+
+
+
+
+
+
+</para><para id="eip-871"><title>Auto Mask</title><media id="diagram7" alt="schematics">
+   <image mime-type="image/jpg" src="../../media/CameraMask.jpg"/>
+ </media>
+<media id="diagram8" alt="schematics">
+   <image mime-type="image/png" src="../../media/automask1.png"/>
+ </media>
+<newline/>
+<emphasis> Captured PSF (Left) and resulting mask (right) using Automask.</emphasis>
+<newline/>
+<newline/>
+After capturing an image of the appropriate PSF for the depth at which our object exists, we isolate the PSF in MATLAB. First the PSF image is converted to black and white. Given the simplicity of our algorithm, it is necessary to apply some smoothing to this black and white image. After, it is cropped and reproduced automatically using a 0-1 search algorithm, yielding a high-resolution matrix of the appropriate PSF. This method eliminates the need for scaling and much of the rigor required to create the PSF manually, such as aligning the mask exactly. Overall the mask that is recovered by this method is truer to the actual mask and results in better deblurring.
+<newline/>
+<newline/></para><para id="eip-965"><title>Then What?</title>Once a PSF is obtained, either by Hand Mask or Auto Mask, we can deblur using the blurred image, the PSF, and the Richardson-Lucy Deconvolution Algorithm.</para>
+</content>
+
+</document>

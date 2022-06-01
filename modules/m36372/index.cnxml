@@ -1,0 +1,26 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Richardson-Lucy Deconvolution</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m36372</md:content-id>
+  <md:title>Richardson-Lucy Deconvolution</md:title>
+  <md:abstract/>
+  <md:uuid>cc894c20-60f5-47cd-9a0e-0345586b8b6a</md:uuid>
+</metadata>
+
+<content>
+    <para id="id1171852248673">We used the Richardson-Lucy algorithm to recover our true image that has been blurred by our point spread function. Our observed image di is the sum of our point spread function, which is the fraction of light observed at position <emphasis effect="italics">i</emphasis> originating from true location j) multiplied by the pixel value uj of the true image. Photon noise is Poisson distributed, therefore the Richardson-Lucy algorithm assumes that all uj pixel values are Poisson distributed. </para>
+    <para id="id1787068">We can iteratively solve for the most likely uj according to the formula:</para>
+    <para id="id1171847716657"><media id="diagram" alt="schematics">
+   <image mime-type="image/png" src="../../media/RL1.png"/>
+ </media>
+
+<media id="diagram2" alt="schematics">
+   <image mime-type="image/png" src="../../media/RL2.png"/>
+ </media>
+
+<media id="diagram3" alt="schematics">
+   <image mime-type="image/png" src="../../media/RL3.png"/>
+ </media></para>
+    <para id="id1171851525772">Because our masks are complicated, Richardson-Lucy will create spatial ringing since we have multiple locations in which light can be transmitted through and it does not always correctly determine the origin of that particular ray. This is why the pinhole aperture deblurred image contains no ringing artifacts because the Richardson-Lucy algorithm will correctly find the true image as the single point because that is always the maximum.</para>
+  </content>
+</document>

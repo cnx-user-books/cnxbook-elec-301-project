@@ -1,0 +1,24 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Results and Remarks</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m36371</md:content-id>
+  <md:title>Results and Remarks</md:title>
+  <md:abstract/>
+  <md:uuid>e67b1954-6a45-4664-9c91-20c4825f772a</md:uuid>
+</metadata>
+
+<content>
+  <para id="delete_me"><!-- Insert module text here -->
+  <media id="diagram15" alt="schematics">
+   <image mime-type="image/png" src="../../media/results.png"/>
+ </media>
+<newline/></para><para id="eip-135"><title>Conclusions and Suggestions</title>As can be seen from the images above, our efforts produce qualitative and quantitative results. Clearly the image of the bear shows significant deblurring and the SNR supports that our methods have chosen the appropriate PSF to do so.
+<newline/>
+<newline/> The SNR table shows that there are small differences between scales. This is a result of some downsampling we used to simplify the analysis process and should not suggest that any arbitrary scale may be used to deblur. In reality, there is a meaningful difference in the SNRs of various scales. 
+<newline/>
+<newline/>
+Finally, we would like to suggest an extension to our project. We were only able to successfully deblur the images of objects that existed in a flat plane, at one depth, in other words. The applications of this method could be extended significantly by developing a way to characterize the different depths of a real life image. A depth-map would provide the means to use the correct PSF for every point in the image, producing an all-focus image.</para>
+</content>
+
+</document>
